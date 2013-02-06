@@ -48,9 +48,9 @@ int white = 5;            // white LEDs connected to digital pin 5 (pwm)
 int ledfan = 111;        //this fan is for cooling the LEDs ***RETIRED
 
 int bluepercent[11] = { 
-  0, 50, 75, 100, 125 ,150, 175, 200, 225, 250, 255 };   // this line is needed if you are using meanwell ELN60-48P
+ 0, 28, 40, 60, 80 ,100, 120, 140, 160, 180, 200  };   // this line is needed if you are using meanwell ELN60-48P
 int whitepercent[11] = { 
-  0, 50, 75, 100, 125 ,150, 175, 200, 225, 250, 255 };   // these are the values in ~10% increments does not responde to <28
+  0, 28, 40, 60, 80 ,100, 120, 140, 160, 180, 200 };   // these are the values in ~10% increments does not responde to <28
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  C L O U D S  |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -59,7 +59,7 @@ int randNumber = random(20, 200);
 
 //defines time delay ranges
 int randTime1 = random(3000,12000); //time the cloud lasts
-int randTime2 = random(10000,15000); //time between clouds
+int randTime2 = random(15000,30000); //time between clouds
 
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
