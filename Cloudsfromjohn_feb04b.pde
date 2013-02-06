@@ -38,9 +38,9 @@ long previousMillis2 = 0;
 int blueramptime = 10 ;    // time for blue LEDs to dim on and off in minutes ***THIS is multiplied to be longer (somehow?) by temperature(); and topoff();
 int whiteramptime = 10 ;  // time for white LEDs to dim on and off in minutes
 int bluemin = 0 ;          // minimmum dimming value of blue LEDs, range of 0-255
-int bluemax = 255 ;        // maximum dimming value of blue LEDs, range of 0-255
+int bluemax = 200 ;        // maximum dimming value of blue LEDs, range of 0-255
 int whitemin = 0 ;         // minimum dimming value of white LEDs, range of 0-255
-int whitemax = 255 ;       // maximum dimming value of white LEDs, range of 0-255
+int whitemax = 200 ;       // maximum dimming value of white LEDs, range of 0-255
 int photoperiod = 570 ;    // amount of time array is on at full power in minutes
 int ontime = 10 ;          // time of day (hour, 24h clock) to begin photoperiod fade in
 int blue = 3;              // blue LEDs connected to digital pin 3 (pwm)
@@ -48,9 +48,9 @@ int white = 5;            // white LEDs connected to digital pin 5 (pwm)
 int ledfan = 111;        //this fan is for cooling the LEDs ***RETIRED
 
 int bluepercent[11] = { 
-  0, 50, 75, 100, 125 ,150, 175, 200, 225, 250, 255 };   // this line is needed if you are using meanwell ELN60-48P
+ 0, 28, 40, 60, 80 ,100, 120, 140, 160, 180, 200  };   // this line is needed if you are using meanwell ELN60-48P
 int whitepercent[11] = { 
-  0, 50, 75, 100, 125 ,150, 175, 200, 225, 250, 255 };   // these are the values in ~10% increments does not responde to <28
+  0, 28, 40, 60, 80 ,100, 120, 140, 160, 180, 200 };   // these are the values in ~10% increments does not responde to <28
 
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||  C L O U D S  |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -59,7 +59,7 @@ int randNumber = random(20, 200);
 
 //defines time delay ranges
 int randTime1 = random(3000,12000); //time the cloud lasts
-int randTime2 = random(10000,15000); //time between clouds
+int randTime2 = random(15000,30000); //time between clouds
 
 /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
@@ -363,7 +363,7 @@ void loop()
        to a power value of 20-200 (based        
        on a 0-255 value range for led intensity)
        */
-      for(int fade1Value = 255 ; fade1Value >= randNumber; fade1Value -=5)
+      for(int fade1Value = 200 ; fade1Value >= randNumber; fade1Value -=5)
       { 
         lcd.setCursor(0, 1);
         lcd.print("passing cloud...");
@@ -375,7 +375,7 @@ void loop()
       // holds dimmed state for 1-7 seconds
       delay(randTime1);
       // fades leds back to 255
-      for(int fade2Value = randNumber; fade2Value <= 255; fade2Value +=5) 
+      for(int fade2Value = randNumber; fade2Value <= 200; fade2Value +=5) 
       { 
     lcd.setCursor(0, 1);
     lcd.print("Sunshine        ");
@@ -399,7 +399,7 @@ void loop()
       // fade white LEDs out from max to min in increments of 1 point:
       for (int i = 10; i >= 0; i--) // setting i value for 10% increment. Start with 10%
       { 
-        analogWrite(blue, 255);
+        analogWrite(blue, 200);
         lcd.setCursor(5, 1);
         lcd.print(10);
         lcd.print(" "); 
